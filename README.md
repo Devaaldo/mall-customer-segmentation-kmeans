@@ -1,55 +1,58 @@
-# Mall Customer Segmentation using K-Means Clustering
+# Customer Segmentation with K-Means Clustering
 
-A machine learning project that segments mall customers into distinct groups based on annual income and spending patterns using K-Means clustering algorithm.
-
-## Overview
-
-This project applies unsupervised learning to identify customer segments in a mall dataset. By clustering customers based on purchasing behavior and income levels, businesses can tailor marketing strategies to specific customer groups.
+Unsupervised machine learning project to segment mall customers based on annual income and spending behavior, with both 2D and 3D clustering approaches.
 
 ## Dataset
 
-- Samples: 200 customers
-- Features: CustomerID, Gender, Age, Annual Income (k$), Spending Score (1-100)
-- Source: Mall Customer dataset
+200 mall customers with features: Age, Gender, Annual Income (k$), Spending Score (1-100).
+
+Source: [Mall Customer Segmentation Data](https://www.kaggle.com/datasets/vjchoudhary7/customer-segmentation-tutorial-in-python)
 
 ## Methodology
 
-1. Load and explore customer data
-2. Select features: Annual Income and Spending Score
-3. Determine optimal clusters using Elbow Method
-4. Apply K-Means clustering with 4 clusters
-5. Analyze and visualize cluster characteristics
+1. Exploratory Data Analysis — distribution, correlation, demographic breakdown
+2. Feature scaling with StandardScaler
+3. Optimal cluster selection via Elbow Method and Silhouette Score
+4. 2D clustering: Annual Income + Spending Score (k=5, Silhouette: 0.5547)
+5. 3D clustering: Age + Annual Income + Spending Score
+6. Segment profiling with business recommendations
 
 ## Results
 
-Four distinct customer segments identified:
+Five customer segments identified:
 
-- Cluster 1: Mid-income, moderate spenders (Income: $48.3K, Score: 56.5)
-- Cluster 2: High-income, high spenders (Income: $86.5K, Score: 82.1)
-- Cluster 3: High-income, low spenders (Income: $87.0K, Score: 18.6)
-- Cluster 4: Low-income, low spenders (Income: $26.3K, Score: 20.9)
+| Segment | Count | Avg Income | Avg Spending |
+|---|---|---|---|
+| Target Customers | 39 | $86.5k | 82.1 |
+| Conservative Rich | 35 | $88.2k | 17.1 |
+| Standard Customers | 81 | $55.3k | 49.5 |
+| Careless Spenders | 22 | $25.7k | 79.4 |
+| Careful Spenders | 23 | $26.3k | 20.9 |
 
-## Technologies
+## Project Structure
+
+```
+customer-segmentation-kmeans/
+├── data/
+│   └── Mall_Customers.csv
+├── notebook/
+│   └── customer_segmentation.ipynb
+├── .gitignore
+├── README.md
+└── requirements.txt
+```
+
+## Setup
+
+```bash
+git clone https://github.com/Devaaldo/customer-segmentation-kmeans.git
+cd customer-segmentation-kmeans
+pip install -r requirements.txt
+jupyter notebook notebook/customer_segmentation.ipynb
+```
+
+## Tech Stack
 
 - Python 3.x
-- pandas, scikit-learn, matplotlib, yellowbrick
-
-## Usage
-
-1. Clone the repository
-2. Install dependencies: `pip install pandas matplotlib scikit-learn yellowbrick`
-3. Run the Jupyter notebook: `jupyter notebook Clustering_Mall_Customer_Segmentation.ipynb`
-
-## Files
-
-- `Clustering_Mall_Customer_Segmentation.ipynb` - Analysis notebook
-- `data/Mall_Customers.csv` - Customer dataset
-- `README.md` - This file
-
-## Business Applications
-
-- Targeted marketing campaigns for each segment
-- Product strategy development based on segment preferences
-- Pricing models adjusted to spending capacity
-- Customer service customization by segment value
-- Revenue forecasting by customer group
+- pandas, numpy, matplotlib, seaborn
+- scikit-learn, yellowbrick
